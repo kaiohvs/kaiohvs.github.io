@@ -1,0 +1,38 @@
+﻿@page "/contato"
+<div class="container">
+    <h1>Contato</h1>
+    <EditForm Model="contactModel" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <div>
+            <label for="name">Nome:</label>
+            <InputText id="name" @bind-Value="contactModel.Name" />
+            <ValidationMessage For="@(() => contactModel.Name)" />
+        </div>
+        <div>
+            <label for="email">E-mail:</label>
+            <InputText id="email" @bind-Value="contactModel.Email" />
+            <ValidationMessage For="@(() => contactModel.Email)" />
+        </div>
+        <div>
+            <label for="message">Mensagem:</label>
+            <InputTextArea id="message" @bind-Value="contactModel.Message" />
+            <ValidationMessage For="@(() => contactModel.Message)" />
+        </div>
+        <button type="submit">Enviar</button>
+    </EditForm>
+</div>
+@code {
+    private ContactModel contactModel = new ContactModel();
+
+    private void HandleSubmit()
+    {
+        // Processa a mensagem de contato
+    }
+
+    public class ContactModel
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Message { get; set; }
+    }
+}
